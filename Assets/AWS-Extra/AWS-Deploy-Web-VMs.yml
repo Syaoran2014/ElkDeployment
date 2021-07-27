@@ -1,0 +1,42 @@
+---
+ - name: Install Required Components
+   hosts: webservers
+   become: true
+   tasks:
+
+    - name: update yum
+      command: yum update -y
+
+    - name: install Docker
+      command: amazon-linux-extras install -y docker
+
+    - name: install Python3 pip
+      yum:
+       name: python3-pip
+       state: latest
+
+    - name: install Python pip docker extension
+      pip:
+        name: docker
+        state: present
+
+    - name: install six
+      pip:
+        name: six
+        state: present
+
+    - name: start docker
+      command: service docker start
+
+    - name: Install DVWA container
+      docker_container:
+        name: dvwa
+        image: cyberxsecurity/dvwa
+        state: started
+        published_ports: 80:80
+        restart_policy: always
+
+    - name: Start docker on boot
+      systemd:
+         name: docker
+         enabled: yes

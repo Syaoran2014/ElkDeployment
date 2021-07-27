@@ -11,9 +11,6 @@
     - name: Filebeat - enable system
       command: filebeat modules enable system
 
-    - name: setup filebeat
-      command: filebeat setup
-
     - name: Copy Filebeat Config
       copy:
         src: /etc/ansible/filebeat-config.yml
@@ -21,6 +18,9 @@
         owner: root
         group: root
         mode: '0644'
+
+    - name: setup filebeat
+      command: filebeat setup
 
     - name: Start Filebeat
       command: service filebeat start
