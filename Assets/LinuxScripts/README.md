@@ -1,0 +1,1 @@
+# The Linux Scripts located in this directory were NOT used in the following project, These were extra scripts made and used while learning Linux administration. 
