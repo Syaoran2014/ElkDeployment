@@ -5,7 +5,7 @@ The files in this repository were used to configure the network depited below
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. 
 
-![Ansible Elk Playbook](Assets/Elkbook.yml)
+![Ansible Elk Playbook](https://github.com/Syaoran2014/ElkDeployment/blob/main/Assets/ElkBook.yml)
 
 This document contains the following details:
 - Description of the Topology
@@ -90,13 +90,13 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
- - Copy the ![Elk Playbook](Assets/ElkBook.yml) file to your ansible container.
+ - Copy the ![Elk Playbook](https://github.com/Syaoran2014/ElkDeployment/blob/main/Assets/ElkBook.yml) file to your ansible container.
  - Update the `hosts` file to include the servers you are wanting to update. (In this case we are using the Elk deployment file. So you would want to add an elk host catagory, and the Ip)
  - Run the playbook with `ansible-playbook ElkBook.yml`, then navigate to your Elk-Host's Public IP on Port 5601. `http://[your.ELK-VM.External.IP]:5601` You should see something similar to the screenshot below
 ![](Assets/Screenshots/ElkAppScreen.png)
 
 From here you can Install Metricbeat or Filebeat: 
- - Back to your Ansible Container, Make sure you copy ![Filebeat Playbook](Assets/InstallFilebeat.yml) to your ansible container. 
+ - Back to your Ansible Container, Make sure you copy ![Filebeat Playbook](https://github.com/Syaoran2014/ElkDeployment/blob/main/Assets/InstallFilebeat.yml) to your ansible container. 
  - Make sure your `hosts` file has the Web -VMs IP's under the WebServers section. (Ensure that webservers is uncommented.)
  - Run the playbook with `ansible-playbook InstallFilebeat.yml`
  - Navigate to `http://[your.ELK-VM.External.IP]:5601` > Click Add Log Data > System Logs > Scroll down to `Module Status` and Click `Check Data` it should return with the Screenshot below 
